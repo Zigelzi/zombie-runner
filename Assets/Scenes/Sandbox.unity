@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  chaseRange: 5
 --- !u!1001 &478508584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1360,7 +1361,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3994384237244622621, guid: d12d809189e6dff4cb94db620f38b488, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3994384237244622621, guid: d12d809189e6dff4cb94db620f38b488, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994384237244622621, guid: d12d809189e6dff4cb94db620f38b488, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3994384237244791609, guid: d12d809189e6dff4cb94db620f38b488, type: 3}
@@ -2021,6 +2030,10 @@ PrefabInstance:
     - target: {fileID: 8046719383376989230, guid: 4fd516cdcd1b83d439ddd3ca3bc8c4aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046719383376989231, guid: 4fd516cdcd1b83d439ddd3ca3bc8c4aa, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fd516cdcd1b83d439ddd3ca3bc8c4aa, type: 3}
