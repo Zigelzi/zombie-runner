@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 2337074158996965286}
   - component: {fileID: 2337074159000356742}
   - component: {fileID: 2337074158999389510}
+  - component: {fileID: 6060110393623823959}
   m_Layer: 0
   m_Name: Carbine
   m_TagString: Untagged
@@ -330,6 +331,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6060110393623823959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337074158997199750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27597af9a565ef419b512989f0f2218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunRange: 100
+  damage: 20
+  shootingSoundEffect: {fileID: 8300000, guid: 048be13dc76bb35409475ae4d9944009, type: 3}
 --- !u!1 &2337074158997199752
 GameObject:
   m_ObjectHideFlags: 0
