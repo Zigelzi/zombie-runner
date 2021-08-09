@@ -793,25 +793,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &448027834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8046719383376989226, guid: 4fd516cdcd1b83d439ddd3ca3bc8c4aa, type: 3}
-  m_PrefabInstance: {fileID: 8046719383283421328}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &448027835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448027834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23ab9a780025eb94682fe70ade455b2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  chaseRange: 5
 --- !u!1001 &478508584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1672,7 +1653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3994384237244791609, guid: d12d809189e6dff4cb94db620f38b488, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3994384237244791609, guid: d12d809189e6dff4cb94db620f38b488, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2394,7 +2375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8046719383376989231, guid: 4fd516cdcd1b83d439ddd3ca3bc8c4aa, type: 3}
       propertyPath: m_StoppingDistance
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fd516cdcd1b83d439ddd3ca3bc8c4aa, type: 3}
