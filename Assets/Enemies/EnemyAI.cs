@@ -44,24 +44,19 @@ public class EnemyAI : MonoBehaviour
         
     }
 
-    void OnDrawGizmosSelected()
-    {
-        DisplayChaseRange();
-    }
-
     void EngageTarget()
     {
         movementSpeed = CalculateSpeed();
 
         if (!IsTargetInAttackRange())
         {
-            StopAttacking();
+            StopAttackAnimation();
             ChaseTarget();
         }
 
         if (IsTargetInAttackRange())
         {
-            AttackTarget();
+            PlayAttackAnimation();
         }
     }
 
@@ -77,16 +72,24 @@ public class EnemyAI : MonoBehaviour
             return false;
         }
     }
+    public bool IsTargetInAttackRange()
+    {
+        distanceToTarget = Vector3.Distance(target.position, transform.position);
+
+        if (distanceToTarget <= navMeshAgent.stoppingDistance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     void ChaseTarget()
     {
         navMeshAgent.SetDestination(target.position);
         PlayMovementAnimation();
-    }
-
-    void PlayMovementAnimation()
-    {
-        animator.SetFloat("movementSpeed", movementSpeed);
     }
 
     float CalculateSpeed()
@@ -97,28 +100,25 @@ public class EnemyAI : MonoBehaviour
         return movementSpeed;
     }
 
-    bool IsTargetInAttackRange()
+    void PlayMovementAnimation()
     {
-        distanceToTarget = Vector3.Distance(target.position, transform.position);
-
-        Debug.Log(distanceToTarget);
-        if (distanceToTarget <= navMeshAgent.stoppingDistance)
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
+        animator.SetFloat("movementSpeed", movementSpeed);
     }
 
-    void AttackTarget()
+    void PlayAttackAnimation()
     {
         animator.SetBool("attack", true);
     }
 
-    void StopAttacking()
+    void StopAttackAnimation()
     {
         animator.SetBool("attack", false);
+    }
+
+    // Gizmos and other utility
+    void OnDrawGizmosSelected()
+    {
+        DisplayChaseRange();
     }
 
     void DisplayChaseRange()
