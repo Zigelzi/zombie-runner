@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent navMeshAgent;
     Animator animator;
     float distanceToTarget = Mathf.Infinity;
+    float turnSpeed = 5f;
     bool isProvoked = false;
 
     Vector3 lastPosition = Vector3.zero;
@@ -47,6 +48,7 @@ public class EnemyAI : MonoBehaviour
     void EngageTarget()
     {
         movementSpeed = CalculateSpeed();
+        FaceTarget();
 
         if (!IsTargetInAttackRange())
         {
@@ -56,6 +58,7 @@ public class EnemyAI : MonoBehaviour
 
         if (IsTargetInAttackRange())
         {
+            
             PlayAttackAnimation();
         }
     }
@@ -113,6 +116,14 @@ public class EnemyAI : MonoBehaviour
     void StopAttackAnimation()
     {
         animator.SetBool("attack", false);
+    }
+
+    void FaceTarget()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 lookDirection = new Vector3(direction.x, 0, direction.z);
+        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
 
     // Gizmos and other utility

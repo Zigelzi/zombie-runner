@@ -19,19 +19,16 @@ public class EnemyAttack : MonoBehaviour
 
     void Update()
     {
-        HandleAttack();
+
     }
 
-    void HandleAttack()
+    void DamagePlayerHitEvent()
     {
+        // Called from the animation event
+        if (playerHealth == null || ai == null) { return;  }
         if (ai.IsTargetInAttackRange())
         {
             playerHealth.TakeDamage(attackDamage);
         }
-    }
-
-    void DamagePlayer()
-    {
-        Debug.Log($"Damaged player for {attackDamage}!");
     }
 }
