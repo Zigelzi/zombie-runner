@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class DeathHandler : MonoBehaviour
 {
-    [SerializeField] Canvas gameOverCanvas;
+    GameOverUIManager gameOverUiManager;
     // Start is called before the first frame update
     void Start()
     {
-        gameOverCanvas = GameObject.FindGameObjectWithTag("GameOverCanvas").GetComponent<Canvas>();
-    }
+        gameOverUiManager = FindObjectOfType<GameOverUIManager>();
+    } 
 
-    // Update is called once per frame
-    void Update()
+    public void HandleDeath()
     {
-        
-    }
-
-    public void DisplayGameOverCanvas(bool canvasVisibility) {
-        gameOverCanvas.enabled = canvasVisibility;
+        gameOverUiManager.DisplayGameOverCanvas(true);
     }
 }

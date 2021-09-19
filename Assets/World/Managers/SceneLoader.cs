@@ -5,15 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    DeathHandler deathHandler;
 
     void Start()
-    {
-        deathHandler = FindObjectOfType<DeathHandler>();    
+    { 
+
     }
     public void RestartGame()
     {
-        deathHandler.DisplayGameOverCanvas(false);
         SceneManager.LoadScene(0);
     }
 

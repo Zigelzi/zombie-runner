@@ -36,6 +36,6 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player has died!");
-        deathHandler.DisplayGameOverCanvas(true);
+        deathHandler.HandleDeath();
     }
 }
