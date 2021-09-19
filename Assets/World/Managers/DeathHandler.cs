@@ -13,6 +13,8 @@ public class DeathHandler : MonoBehaviour
 
     public void HandleDeath()
     {
+        Time.timeScale = 0;
         gameOverUiManager.DisplayGameOverCanvas(true);
+        gameOverUiManager.DisplayMouseCursor(true);
     }
 }

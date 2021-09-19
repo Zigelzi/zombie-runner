@@ -10,12 +10,28 @@ public class GameOverUIManager : MonoBehaviour
     {
         gameOverCanvas = GameObject.FindGameObjectWithTag("GameOverCanvas").GetComponent<Canvas>();
 
-        // Ensure that the canvas is off at start
+        // Ensure that the canvas is off at start and mouse cursor is locked
         DisplayGameOverCanvas(false);
+        DisplayMouseCursor(false);
+
     }
 
     public void DisplayGameOverCanvas(bool canvasVisibility)
     {
         gameOverCanvas.enabled = canvasVisibility;
+    }
+
+    public void DisplayMouseCursor(bool cursorVisibility)
+    {
+        if (cursorVisibility == true)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

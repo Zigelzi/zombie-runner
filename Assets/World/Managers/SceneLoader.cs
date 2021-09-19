@@ -13,6 +13,7 @@ public class SceneLoader : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void QuitGame()
