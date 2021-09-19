@@ -8,11 +8,14 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] [Range(1, 500f)] float maxHealth = 100f;
     [SerializeField] float currentHealth;
+
+    DeathHandler deathHandler;
     
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        deathHandler = FindObjectOfType<DeathHandler>();
     }
 
     // Update is called once per frame
@@ -33,5 +36,6 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player has died!");
+        deathHandler.DisplayGameOverCanvas(true);
     }
 }
