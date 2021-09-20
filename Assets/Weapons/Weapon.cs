@@ -10,13 +10,16 @@ public class Weapon : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
 
-    Camera playerCamera;
     AudioSource audioSource;
+    Ammo ammo;
+    Camera playerCamera;
+    
 
     void Awake()
     {
         playerCamera = GetComponentInParent<Camera>();
         audioSource = GetComponentInParent<AudioSource>();
+        ammo = GetComponentInParent<Ammo>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,10 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            if (ammo.HasAmmo())
+            {
+                Shoot();
+            }
         }
     }
 
@@ -38,18 +44,19 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         bool hitObject = Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, gunRange);
 
-        PlayShootingSFX();
+        PlaySFX();
         PlayMuzzleFlash();
+        ammo.Consume();
 
         if (hitObject)
         {
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+            
             PlayHitEffect(hit);
 
             if (target == null) { return; }
 
             target.TakeDamage(damage);
-            Debug.Log($"Hit: {hit.transform.name}!");
         }
         else
         {
@@ -57,7 +64,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    void PlayShootingSFX()
+    void PlaySFX()
     {
         if (audioSource)
         {
@@ -76,7 +83,10 @@ public class Weapon : MonoBehaviour
     void PlayHitEffect(RaycastHit hit)
     {
         if (hitEffect == null) { return; }
+
         GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impact, .1f);
     }
+
+    
 }
