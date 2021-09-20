@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2152527156416641245}
   - component: {fileID: 418226003}
+  - component: {fileID: 581951253959699376}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -28,9 +29,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5740696780252553188}
-  - {fileID: 4436428027733817193}
   - {fileID: 6341071836567485485}
+  - {fileID: 4436428027733817193}
+  - {fileID: 5740696780252553188}
   m_Father: {fileID: 3994384237244791611}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
@@ -130,6 +131,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &581951253959699376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2546534209267487081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2d689c5ec55bd41bace392460cb71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 0
 --- !u!1 &3994384237244622621
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5042804030326219604, guid: 81c82b70b99e9464b89ee314b48ccb6f, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5042804030326219604, guid: 81c82b70b99e9464b89ee314b48ccb6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -609,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3939840320452705231, guid: 94b49e1d8a854ed40a7ad6f1e590df53, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94b49e1d8a854ed40a7ad6f1e590df53, type: 3}
@@ -635,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7780620372664639069, guid: 057c934e1ce669e42bf5bb58512ca91b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7780620372664639069, guid: 057c934e1ce669e42bf5bb58512ca91b, type: 3}
       propertyPath: m_LocalPosition.x
