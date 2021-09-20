@@ -9,9 +9,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] AudioClip shootingSoundEffect;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    [SerializeField] [Range(0, 5f)] float timeBetweenShots = 1f;
 
     AudioSource audioSource;
     Ammo ammo;
+    bool canShoot = true;
     Camera playerCamera;
     
 
@@ -32,36 +34,27 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (ammo.HasAmmo())
+            if (ammo.HasAmmo() && canShoot)
             {
-                Shoot();
+                StartCoroutine(Shoot());
             }
         }
     }
 
-    void Shoot()
+    IEnumerator Shoot()
     {
-        RaycastHit hit;
-        bool hitObject = Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, gunRange);
+        canShoot = false;
 
         PlaySFX();
         PlayMuzzleFlash();
         ammo.Consume();
 
-        if (hitObject)
-        {
-            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
-            
-            PlayHitEffect(hit);
+        ProcessHit();
 
-            if (target == null) { return; }
+        yield return new WaitForSeconds(timeBetweenShots);
+        
+        canShoot = true;
 
-            target.TakeDamage(damage);
-        }
-        else
-        {
-            return;
-        }
     }
 
     void PlaySFX()
@@ -77,6 +70,30 @@ public class Weapon : MonoBehaviour
         if (muzzleFlash)
         {
             muzzleFlash.Play();
+        }
+    }
+
+    void ProcessHit()
+    {
+        RaycastHit hit;
+        bool hitObject = Physics.Raycast(playerCamera.transform.position, 
+                                         playerCamera.transform.forward, 
+                                         out hit, 
+                                         gunRange);
+
+        if (hitObject)
+        {
+            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+
+            PlayHitEffect(hit);
+
+            if (target == null) { return; }
+
+            target.TakeDamage(damage);
+        }
+        else
+        {
+            return;
         }
     }
 

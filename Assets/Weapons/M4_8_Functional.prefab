@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1873383767796992532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939840320452705231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3322701463496a4da3fb3dc115c4d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomInFOV: 20
+  zoomInSensitivity: 0.5
+  zoomOutFOV: 60
+  zoomOutSensitivity: 2
+  zoomedIn: 0
 --- !u!114 &4714390328792858063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17,6 +34,7 @@ MonoBehaviour:
   shootingSoundEffect: {fileID: 8300000, guid: 048be13dc76bb35409475ae4d9944009, type: 3}
   muzzleFlash: {fileID: 3347751739077993314}
   hitEffect: {fileID: 6422334900727792671, guid: 44e3e3443444b75439acdc0614c4d6af, type: 3}
+  timeBetweenShots: 0.1
 --- !u!1001 &2603582322287534553
 PrefabInstance:
   m_ObjectHideFlags: 0
