@@ -12,7 +12,6 @@ public class WeaponZoom : MonoBehaviour
     [SerializeField] float zoomOutSensitivity = 2f;
 
     [SerializeField] bool zoomedIn = false;
-    [SerializeField] bool zoomEnabled = false;
 
     RigidbodyFirstPersonController playerController;
     Camera playerCamera;
@@ -24,7 +23,7 @@ public class WeaponZoom : MonoBehaviour
         playerController = GetComponentInParent<RigidbodyFirstPersonController>();
     }
 
-    void OnEnable()
+    void OnDisable()
     {
         // Ensure that when switching to weapon the settings are resetted
         SetZoomIn(false);
@@ -33,7 +32,7 @@ public class WeaponZoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && zoomEnabled)
+        if (Input.GetMouseButtonDown(1))
         {
             HandleZoom();
         }
