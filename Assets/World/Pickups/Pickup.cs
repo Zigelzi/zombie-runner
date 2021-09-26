@@ -17,6 +17,8 @@ public class Pickup : MonoBehaviour
             if (pickupType == PickupType.Ammo)
             {
                 Ammo ammo = other.gameObject.GetComponent<Ammo>();
+                if (ammo == null) { return; }
+
                 ammo.Refill(ammoType, pickupAmount);
 
             }
