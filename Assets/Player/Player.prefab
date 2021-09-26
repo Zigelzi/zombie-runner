@@ -333,10 +333,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoSlots:
   - amount: 20
+    magSize: 20
     ammoType: 0
   - amount: 5
+    magSize: 5
     ammoType: 1
   - amount: 10
+    magSize: 10
     ammoType: 2
 --- !u!1 &3994384237244622623
 GameObject:

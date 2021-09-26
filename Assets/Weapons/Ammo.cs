@@ -10,7 +10,20 @@ public class Ammo : MonoBehaviour
     private class AmmoSlot
     {
         public int amount;
+        public int magSize;
         public AmmoType ammoType;
+
+        public bool MagFull()
+        {
+
+            if (amount >= magSize)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+    }
     }
 
     public bool HasAmmo(AmmoType ammoType)
@@ -47,5 +60,17 @@ public class Ammo : MonoBehaviour
         }
 
         return null;
+    }
+
+    
+
+    public void Refill(AmmoType ammoType, int amount)
+    {
+        AmmoSlot ammoSlot = GetAmmoSlot(ammoType);
+
+        if (!ammoSlot.MagFull())
+        {
+            ammoSlot.amount += amount;
+        }
     }
 }
