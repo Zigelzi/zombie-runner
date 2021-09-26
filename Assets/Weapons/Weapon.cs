@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] float gunRange = 100f;
     [SerializeField] int damage = 20;
+    [SerializeField] AmmoType ammoType;
     [SerializeField] AudioClip shootingSoundEffect;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
@@ -30,11 +31,17 @@ public class Weapon : MonoBehaviour
         HandleShooting();
     }
 
+    void OnEnable()
+    {
+        // Ensure that the weapon delay is resetted when switching to weapon
+        canShoot = true;
+    }
+
     void HandleShooting()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (ammo.HasAmmo() && canShoot)
+            if (ammo.HasAmmo(ammoType) && canShoot)
             {
                 StartCoroutine(Shoot());
             }
@@ -47,7 +54,7 @@ public class Weapon : MonoBehaviour
 
         PlaySFX();
         PlayMuzzleFlash();
-        ammo.Consume();
+        ammo.Consume(ammoType);
 
         ProcessHit();
 

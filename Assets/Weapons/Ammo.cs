@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
-    [SerializeField] int amount = 5;
-    public int Amount { get { return amount; } }
-    
-    public bool HasAmmo()
+    [SerializeField] AmmoSlot[] ammoSlots;
+
+    [System.Serializable]
+    private class AmmoSlot
     {
-        if (amount > 0)
+        public int amount;
+        public AmmoType ammoType;
+    }
+
+    public bool HasAmmo(AmmoType ammoType)
+    {
+        AmmoSlot ammoSlot = GetAmmoSlot(ammoType);
+
+        if (ammoSlot.amount > 0)
         {
             return true;
         }
@@ -19,11 +27,25 @@ public class Ammo : MonoBehaviour
         }
     }
 
-    public void Consume()
+    public void Consume(AmmoType ammoType)
     {
-        if (HasAmmo())
+        AmmoSlot ammoSlot = GetAmmoSlot(ammoType);
+        if (HasAmmo(ammoType))
         {
-            amount--;
+            ammoSlot.amount--;
         }
+    }
+
+    AmmoSlot GetAmmoSlot(AmmoType ammoType)
+    {
+        foreach (AmmoSlot slot in ammoSlots)
+        {
+            if (slot.ammoType == ammoType)
+            {
+                return slot;
+            }
+        }
+
+        return null;
     }
 }

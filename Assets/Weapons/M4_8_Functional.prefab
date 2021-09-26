@@ -17,6 +17,7 @@ MonoBehaviour:
   zoomOutFOV: 60
   zoomOutSensitivity: 2
   zoomedIn: 0
+  zoomEnabled: 1
 --- !u!114 &4714390328792858063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,6 +32,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunRange: 100
   damage: 20
+  ammoType: 0
   shootingSoundEffect: {fileID: 8300000, guid: 048be13dc76bb35409475ae4d9944009, type: 3}
   muzzleFlash: {fileID: 3347751739077993314}
   hitEffect: {fileID: 6422334900727792671, guid: 44e3e3443444b75439acdc0614c4d6af, type: 3}

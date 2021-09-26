@@ -5,7 +5,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class WeaponZoom : MonoBehaviour
 {
-
     [SerializeField] float zoomInFOV = 20f;
     [SerializeField] float zoomInSensitivity = 0.5f;
 
@@ -13,21 +12,28 @@ public class WeaponZoom : MonoBehaviour
     [SerializeField] float zoomOutSensitivity = 2f;
 
     [SerializeField] bool zoomedIn = false;
+    [SerializeField] bool zoomEnabled = false;
 
     RigidbodyFirstPersonController playerController;
     Camera playerCamera;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerController = GetComponentInParent<RigidbodyFirstPersonController>();
     }
 
+    void OnEnable()
+    {
+        // Ensure that when switching to weapon the settings are resetted
+        SetZoomIn(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && zoomEnabled)
         {
             HandleZoom();
         }

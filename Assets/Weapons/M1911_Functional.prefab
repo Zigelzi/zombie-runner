@@ -14,10 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunRange: 50
   damage: 10
+  ammoType: 2
   shootingSoundEffect: {fileID: 8300000, guid: 17f7837c20ee7f749a6dbf5564c53f96, type: 3}
   muzzleFlash: {fileID: 6382906549674503993}
   hitEffect: {fileID: 6422334900727792671, guid: 44e3e3443444b75439acdc0614c4d6af, type: 3}
   timeBetweenShots: 0.4
+--- !u!114 &2719746069884258227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777096895859506761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3322701463496a4da3fb3dc115c4d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomInFOV: 20
+  zoomInSensitivity: 0.5
+  zoomOutFOV: 60
+  zoomOutSensitivity: 2
+  zoomedIn: 0
 --- !u!1001 &5963031556862979458
 PrefabInstance:
   m_ObjectHideFlags: 0
