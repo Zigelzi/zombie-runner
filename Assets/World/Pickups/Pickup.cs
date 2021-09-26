@@ -7,14 +7,16 @@ public class Pickup : MonoBehaviour
     [SerializeField] PickupType pickupType;
     [SerializeField] AmmoType ammoType;
     [SerializeField] int pickupAmount = 1;
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("Picked up a pickup!");
             if (pickupType == PickupType.Ammo)
             {
-                Ammo ammo = collision.gameObject.GetComponent<Ammo>();
+                Ammo ammo = other.gameObject.GetComponent<Ammo>();
                 ammo.Refill(ammoType, pickupAmount);
 
             }
