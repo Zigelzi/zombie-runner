@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     bool isProvoked = false;
 
     Vector3 lastPosition = Vector3.zero;
-    float movementSpeed = 0;
+    [SerializeField]float movementSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
