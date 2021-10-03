@@ -8,8 +8,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] [Range(0, 20f)] float chaseRange = 5f;
 
-    NavMeshAgent navMeshAgent;
     Animator animator;
+    EnemyHealth enemyHealth;
+    NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
     float turnSpeed = 5f;
     bool isProvoked = false;
@@ -22,6 +23,8 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        enemyHealth = GetComponent<EnemyHealth>();
+
         Player player = FindObjectOfType<Player>();
         if (player != null)
         {
@@ -33,6 +36,11 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(enemyHealth.IsDead)
+        {
+            DisableNavigationAndMovement();
+        }
+
         if (isProvoked)
         {
             EngageTarget();
@@ -43,6 +51,13 @@ public class EnemyAI : MonoBehaviour
             ChaseTarget();
         }
         
+    }
+
+    void DisableNavigationAndMovement()
+    {
+        NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.enabled = false;
+        enabled = false;
     }
 
     void EngageTarget()

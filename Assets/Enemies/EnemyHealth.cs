@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     int hitPoints = 100;
     bool isDead = false;
 
+    public bool IsDead { get { return isDead; } }
+
     public void TakeDamage(int damage)
     {
         if (isDead) { return; }
@@ -23,14 +25,15 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Animator animator = GetComponent<Animator>();
-        EnemyAI enemyAI = GetComponent<EnemyAI>();
-        NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
-        
-        enemyAI.enabled = false;
-        animator.SetTrigger("die");
-        navMeshAgent.enabled = false;
+        PlayDeathAnimation();
 
         isDead = true;
     }
+
+    void PlayDeathAnimation()
+    {
+        Animator animator = GetComponent<Animator>();
+        animator.SetTrigger("die");
+    }
+
 }
