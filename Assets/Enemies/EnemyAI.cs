@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour
     {
         if(enemyHealth.IsDead)
         {
-            DisableNavigationAndMovement();
+            DisableAI();
         }
 
         if (isProvoked)
@@ -53,11 +53,9 @@ public class EnemyAI : MonoBehaviour
         
     }
 
-    void DisableNavigationAndMovement()
+    void DisableAI()
     {
-        NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.enabled = false;
-        enabled = false;
+        enabled = false;   
     }
 
     void EngageTarget()
